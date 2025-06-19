@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import homelogo from '../../assets/homelogo.jpg'; 
-import {useState} from 'react';
+//import {useState} from 'react';
 
 const Login = () => {
-    const myUser = {
-        'email': 'vishwas@gmail.com',
-        'password': 'nicsi123'
-    }
+    //const myUser = {
+       // 'email': 'vishwas@gmail.com',
+       // 'password': 'nicsi123'
+   // }
 
   return (
     <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
