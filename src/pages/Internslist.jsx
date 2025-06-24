@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Dashboardnavbar from '../components/Dashboardnavbar';
-import AddInternModal from '../components/AddInternModal';
 import EditInternModal from '../components/EditInternModal';
+
+const LOCAL_STORAGE_KEY = 'internsList';
 
 const initialInterns = [
   { id: 1, name: 'Vishwas R', email: 'vishwas@example.com' },
@@ -11,36 +12,44 @@ const initialInterns = [
 ];
 
 const InternsList = () => {
-  const [interns, setInterns] = useState(initialInterns);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [showAddModal, setShowAddModal] = useState(false);
+  const navigate = useNavigate();
+
+  const [interns, setInterns] = useState(() => {
+    const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : initialInterns;
+  });
+
   const [showEditModal, setShowEditModal] = useState(false);
   const [editName, setEditName] = useState('');
   const [editEmail, setEditEmail] = useState('');
   const [editingIntern, setEditingIntern] = useState(null);
-  const navigate = useNavigate();
 
-  const handleSearch = (e) => setSearchTerm(e.target.value);
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(interns));
+  }, [interns]);
 
-  const filteredInterns = interns.filter((intern) =>
-    intern.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    intern.email.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleAddIntern = (name, email) => {
+  const handleAddIntern = () => {
     const newIntern = {
       id: Date.now(),
-      name,
-      email,
+      name: '',
+      email: '',
     };
-    setInterns([newIntern, ...interns]);
-    setShowAddModal(false);
+
+    setInterns((prev) => {
+      const updated = [newIntern, ...prev];
+      setTimeout(() => {
+        setEditingIntern(newIntern);
+        setEditName('');
+        setEditEmail('');
+        setShowEditModal(true);
+      }, 0);
+      return updated;
+    });
   };
 
   const handleDelete = (id) => {
-    const confirm = window.confirm('Are you sure you want to delete this intern?');
-    if (confirm) {
-      setInterns(interns.filter((intern) => intern.id !== id));
+    if (window.confirm('Are you sure you want to delete this intern?')) {
+      setInterns((prev) => prev.filter((intern) => intern.id !== id));
     }
   };
 
@@ -53,9 +62,13 @@ const InternsList = () => {
   };
 
   const handleSaveEdit = () => {
-    setInterns(
-      interns.map((intern) =>
-        intern.id === editingIntern.id ? { ...intern, name: editName, email: editEmail } : intern
+    if (!editingIntern) return;
+
+    setInterns((prevInterns) =>
+      prevInterns.map((intern) =>
+        intern.id === editingIntern.id
+          ? { ...intern, name: editName.trim(), email: editEmail.trim() }
+          : intern
       )
     );
     setShowEditModal(false);
@@ -65,12 +78,6 @@ const InternsList = () => {
   return (
     <>
       <Dashboardnavbar />
-
-      <AddInternModal
-        show={showAddModal}
-        onClose={() => setShowAddModal(false)}
-        onAdd={handleAddIntern}
-      />
 
       <EditInternModal
         show={showEditModal}
@@ -87,33 +94,28 @@ const InternsList = () => {
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h3>Interns List</h3>
           <h5>Total Interns: {interns.length}</h5>
-          <button className="btn btn-primary" onClick={() => setShowAddModal(true)}>
+          <button className="btn btn-primary" onClick={handleAddIntern}>
             Add Intern
           </button>
         </div>
 
-        <input
-          type="text"
-          className="form-control mb-3"
-          placeholder="Search by name or email..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-
         <div className="row">
-          {filteredInterns.length === 0 ? (
+          {interns.length === 0 ? (
             <p>No interns found.</p>
           ) : (
-            filteredInterns.map((intern) => (
+            interns.map((intern) => (
               <div
                 key={intern.id}
                 className="col-md-4 mb-4"
-                onClick={() => navigate(`/interns/${intern.id}`)}
+                onClick={() => navigate(`/interns/${intern.id}`)} // ✅ Fixed here
               >
-                <div className="card h-100 shadow" style={{ cursor: 'pointer', position: 'relative' }}>
+                <div
+                  className="card h-100 shadow"
+                  style={{ cursor: 'pointer', position: 'relative' }}
+                >
                   <div className="card-body">
-                    <h5 className="card-title">{intern.name}</h5>
-                    <p className="card-text">{intern.email}</p>
+                    <h5 className="card-title">{intern.name || '(No Name)'}</h5>
+                    <p className="card-text">{intern.email || '(No Email)'}</p>
 
                     <button
                       className="btn btn-sm btn-danger"

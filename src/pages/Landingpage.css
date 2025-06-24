@@ -1,23 +1,8 @@
 
-
-:root {
-   --orange: #fd7e14;
-  --brown: #6C4744;
-  --light-brown: #8b5a2b;
-  --blue-main: #3a7bd5;
-  --blue-dark: #2a5db0;
-  --blue-light: #e6f0ff;
-  --blue-border: rgba(255,255,255,0.3);
-}
 .btn:hover {
   transform: scale(1.05);
-  transition: transform 0.2s ease-in-out;
 }
-.main-section-wrapper {
-  position: relative;
-  background-color: white;
-  padding-bottom: 50px; /* Space for the wave */
-}
+
 .background-wrapper {
   background-image: url('c:\Users\USER\Downloads\WhatsApp Image 2025-06-19 at 12.41.53 (1).jpeg');
   background-size: cover;
@@ -32,83 +17,19 @@
   padding: 3rem;
   max-width: 1140px;
   margin: 0 auto;
-  border-radius: 16px;
+ 
 }
 
 .text-orange {
   color: #f47721;
-}
-
-.thin-orange-navbar {
-  background-color: #f47721;
-  height: 4px;
-}
-
-.custom-rosewood.navbar {
-  background-color: #650000;
-}
-
-.text-orange {
-  color: #f47721;
-}
-
-.thin-orange-navbar {
-  background-color: #f47721;
-  height: 4px;
-}
-
-.custom-rosewood.navbar {
-  background-color: #650000;
-}
-
-.main-section-wrapper {
-  position: relative;
-  background-color: white;
-  padding-bottom: 15px; /* Space for the wave */
-}
-
-
-
-.custom-rosewood {
-  background-color: var(--brown) ;
-}
-
-.thin-orange-navbar {
-  background-color: var(--orange);
-  height: 20px;
-}
-
-
-.text-orange {
-  color: var(--orange) ;
 }
 
 
 .btn-warning {
-  background-color: var(--orange);
-  border-color: var(--orange);
+  background-color:rgb(255, 196, 0);
+  border-color:yellowgreen;
   color: white;
 }
-
-.btn-warning:hover {
-  background-color: #e67300;
-  border-color: #e67300;
-}
-
-.card {
-  transition: all 0.3s ease;
-  border-radius: 1rem ;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 1rem 3rem rgba(0,0,0,.175) ;
-}
-
-.border-orange {
-  border-color: var(--orange) ;
-}
-
 
 @media (max-width: 992px) {
   .main-section {

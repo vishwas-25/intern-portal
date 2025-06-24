@@ -1,0 +1,25 @@
+
+
+.dashboard-wrapper {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.total-employees h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.total-employees h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.cards-grid .info-card {
+  min-width: 120px;
+  flex-grow: 1;
+}
+
+.alert-card {
+  background-color: #dc3545;
+}
