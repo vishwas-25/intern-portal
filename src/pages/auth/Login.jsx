@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import homelogo from '../../assets/homelogo.jpg';
 import dummydata from '../../data';
-import { useLanguage } from '../../contexts/LanguageContext';  // Import Language context
+import { useLanguage } from '../../contexts/LanguageContext';  
 
 const Login = () => {
   const { language, setLanguage } = useLanguage();
@@ -12,7 +12,7 @@ const Login = () => {
   const [error, seterror] = useState('');
   const navigate = useNavigate();
 
-  // Content for English and Hindi
+  
   const content = {
     en: {
       pageTitle: 'Login',
@@ -138,7 +138,7 @@ const Login = () => {
               style={{
                 height: '60px',
                 borderRadius: '8px',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+              
               }}
             />
           </Link>
