@@ -1,0 +1,196 @@
+
+.card-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.card-subtitle,
+.card-text {
+  color: #444;
+  font-weight: 500;
+}
+
+/*  edit/delete buttons */
+.card .btn-sm {
+  transition: transform 0.2s ease;
+}
+
+
+
+
+.ribbon-toggle {
+  background: linear-gradient(to right, #0d6efd, #0a58ca);
+  color: white;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.ribbon-toggle:hover {
+  background: #084298;
+  transform: scale(1.05);
+}
+
+
+
+.intern-form-wrapper {
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #787b81;
+  box-shadow: 0 4px 12px rgb(212, 203, 203);
+  transition: none !important; 
+  
+}
+
+.form-control-blue {
+  border: 1px solid #c2dafc;
+  border-radius: 8px;
+ 
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+  transform: none !important;
+}
+
+.form-control-blue:focus {
+  border-color: #377dff;
+  box-shadow: 0 0 0 2px rgba(55, 125, 255, 0.2);
+  transform: none !important;
+}
+.intern-list-wrapper {
+  min-height: 100vh;
+  padding: 30px;
+   background: linear-gradient(to right, #dbeafe, #9f9fbd); 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.outside {
+  min-height: 100vh;
+  background: linear-gradient(to right, #dbeafe, #9f9fbd); 
+  padding: 30px 0;
+}
+
+
+
+
+
+.card.bg-image-card {
+  position: relative;
+  overflow: hidden;
+  color: #000;
+}
+
+.card.bg-image-card .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/DataAnalyticsimg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2; /* very light */
+  z-index: 0;
+}
+
+.card.bg-image-card .card-body {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.card.bg-image-card .card-title {
+  font-weight: bold;
+  color: #000;
+}  
+
+/* Base intern card with background image */
+.intern-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  background-color: transparent;
+}
+
+/* Light background image overlay */
+.intern-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/DataAnalyticsimg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15; /* Light opacity for better text visibility */
+  z-index: 0;
+}
+
+
+.intern-card:hover {
+  transform: translateY(-8px) scale(1);
+  box-shadow: 0 20px 45px grey;
+  border: 1px solid rgba(0, 0, 0, 0.418);
+  background-color: rgba(255, 255, 255, 0.4); 
+}
+
+/* Content on top of image */
+.intern-card .card-body {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.intern-card .card-title {
+  font-weight: bold;
+  color: #000;
+}
+
+.intern-card .card-subtitle,
+.intern-card .card-text {
+  color: #222;
+  font-weight: 500;
+}
+/* Ribbon-style grouped college card */
+.ribbon-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #a5b4fc;
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.ribbon-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #c7d2fe, #a5b4fc);
+}
+
+.ribbon-card .ribbon-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.ribbon-card .ribbon-subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #4b5563;
+}
