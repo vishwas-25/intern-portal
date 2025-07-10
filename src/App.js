@@ -15,14 +15,14 @@ import Protectedroute from './components/Protectedroute';
 import InternsList from './pages/Internslist';
 import Interndetails from './pages/Interndetails';
 import ProfilePage from './pages/intern/ProfilePage';
-import CollegeInternsPage from './pages/CollegeInternsPage'; // ✅ Import new page
+import CollegeInternsPage from './pages/CollegeInternsPage'; 
 
 const App = () => {
   return (
     <Router>
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<Landingpage />} />
+        <Route path="/" element={<Landingpage/>} /> {/*landing page  agr ackend ka api na chal rha ho & u have to do designing in other page then just bring it upar*/}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/adminlogin" element={<Adminlogin />} />
@@ -33,7 +33,7 @@ const App = () => {
         <Route path="/interns" element={<InternsList />} />
         <Route path="/interns/:id" element={<Interndetails />} />
 
-        {/* ✅ Grouped College Interns Route */}
+        {/*  Grouped College Interns Route */}
         <Route path="/grouped/:college/:year" element={<CollegeInternsPage />} />
 
         {/* Admin */}

@@ -1,11 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+// eslint-disable-next-line
+import axios from 'axios';
 import Hamburgersidebar from './Hamburgersidebar';
+// eslint-disable-next-line
+const API_URL = "http://192.168.0.135:3001";
 
+// Allow cookies to be sent
+// axios.defaults.withCredentials = true;
 
 const Dashboardnavbar = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const user = JSON.parse(sessionStorage.getItem("loggedInUser"));  
 
   const getGreetings = () => {
     const hour = new Date().getHours();
@@ -14,9 +20,16 @@ const Dashboardnavbar = () => {
     return "Good Evening";
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("loggedInUser");
-    navigate("/login");
+  const handleLogout = async () => {
+    try {
+      console.log('in handle logut')
+      // await axios.post(`${API_URL}/logout`); // Call logout API
+      sessionStorage.clear();  // Clear stored user session info
+      navigate("/login");      // Redirect to login
+    } catch (error) {
+      console.log('in navbar logout')
+      console.error("Logout failed:", error);
+    }
   };
 
   const navLinks = [
@@ -24,12 +37,11 @@ const Dashboardnavbar = () => {
     { label: 'Profile', href: '/profile' },
     { label: "Interns List", href: "/interns"},
     { label: 'Settings', href: '/settings' },
-    { label: 'Logout', href: '/login', onClick: handleLogout },
+    { label: 'Logout', href: '#', onClick: handleLogout }, // Don't navigate directly
   ];
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow">
-      {/* 👇 Include the sidebar component and pass navLinks as a prop */}
       <Hamburgersidebar links={navLinks} />
 
       <a className="navbar-brand" href="/">Intern Dashboard</a>
