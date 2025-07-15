@@ -82,6 +82,4 @@ const CollegeInternsPage = () => {
   );
 };
 
-export default CollegeInternsPage;
-
-
+export default CollegeInternsPage;  
