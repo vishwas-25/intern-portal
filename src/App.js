@@ -12,7 +12,8 @@ import Internslist from './pages/Internslist';        // list of interns
 import Interndetails from './pages/Interndetails';
 
 const App = () => {
-  return (
+return (
+  
 <Router>
   <Routes>
   <Route path='/' element={<Landingpage />} />
