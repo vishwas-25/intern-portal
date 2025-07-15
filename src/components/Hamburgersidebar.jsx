@@ -6,17 +6,19 @@ const Hamburgersidebar = ({ links }) => {
   const navigate = useNavigate();
 
   const handleNav = (link) => {
-    if (link.onClick) link.onClick(); 
-    console.log(link) // Custom logic like logout
-    navigate(link.href);               // Navigate to the route
-    setIsOpen(false);                  // Close sidebar
+    if (link.onClick) {
+      link.onClick(); // e.g., Logout
+    } else if (link.href) {
+      navigate(link.href); // Navigate only if no onClick
+    }
+    setIsOpen(false);
   };
 
   return (
     <>
       {/* Hamburger Button */}
       <button
-        className="btn btn-outline-light  me-2"
+        className="btn btn-outline-light me-2"
         onClick={() => setIsOpen(true)}
       >
         <i className="bi bi-list fs-4"></i>
